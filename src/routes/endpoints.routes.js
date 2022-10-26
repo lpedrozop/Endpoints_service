@@ -5,7 +5,7 @@ const router = Router()
 
 router.get('/inventario', (req, res) => {
     let url;
-    url = 'https://apiinventario-production.up.railway.app/inventory'
+    url = 'https://apirest-inventario.herokuapp.com/inventory'
     fetch(url)
         .then((respuesta) => {
             return respuesta.json()
@@ -17,7 +17,7 @@ router.get('/inventario', (req, res) => {
 router.get('/inventario/:id', function (req, res) {
 
     let url;
-    url = 'https://apiinventario-production.up.railway.app/inventory/'
+    url = 'https://apirest-inventario.herokuapp.com/inventory/'
     fetch(url+req.params.id)
         .then((respuesta) => {
             return respuesta.json()
@@ -29,7 +29,7 @@ router.get('/inventario/:id', function (req, res) {
 router.get('/carrito', (req, res) => {
 
     let url;
-    url = 'https://apicarrito-production.up.railway.app/carrito'
+    url = 'https://apirest-carrito.herokuapp.com/carrito'
     fetch(url)
         .then((respuesta) => {
             return respuesta.json()
@@ -41,7 +41,7 @@ router.get('/carrito', (req, res) => {
 router.get('/carrito/:id', function (req, res) {
 
     let url;
-    url='https://apicarrito-production.up.railway.app/carrito/'
+    url='https://apirest-carrito.herokuapp.com/carrito/'
     fetch(url+req.params.id)
         .then((respuesta) => {
             return respuesta.json()
