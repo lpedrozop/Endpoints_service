@@ -1,53 +1,25 @@
 import {Router} from "express";
-import fetch from 'node-fetch'
+import {
+    create_inventory,
+    delete_inventory,
+    inventario, inventario_id,
+    update_inventory
+} from "../controller/endpointsin.controller.js";
+import {carrito, carrito_id, update_carrito} from "../controller/endpointsca.controller.js";
+import {login, sigin} from "../controller/endpointsus.controller.js";
 
 const router = Router()
 
-router.get('/inventario', (req, res) => {
-    let url;
-    url = 'https://apirest-inventario.herokuapp.com/inventory'
-    fetch(url)
-        .then((respuesta) => {
-            return respuesta.json()
-        })
-        .then(data => res.send(data))
+router.get('/inventario', inventario)
+router.get('/inventario/:id',inventario_id)
+router.get('/create_inventory',create_inventory)
+router.get('/update_inventory',update_inventory)
+router.get('/delete_inventory',delete_inventory)
+router.get('/carrito', carrito)
+router.get('/carrito/:id', carrito_id)
+router.get('/update_carrito', update_carrito)
+router.get('/login', login)
+router.get('/sigin', sigin)
 
-})
-
-router.get('/inventario/:id', function (req, res) {
-
-    let url;
-    url = 'https://apirest-inventario.herokuapp.com/inventory/'
-    fetch(url+req.params.id)
-        .then((respuesta) => {
-            return respuesta.json()
-        })
-        .then(data => res.send(data))
-
-})
-
-router.get('/carrito', (req, res) => {
-
-    let url;
-    url = 'https://apirest-carrito.herokuapp.com/carrito'
-    fetch(url)
-        .then((respuesta) => {
-            return respuesta.json()
-        })
-        .then(data => res.send(data))
-
-})
-
-router.get('/carrito/:id', function (req, res) {
-
-    let url;
-    url='https://apirest-carrito.herokuapp.com/carrito/'
-    fetch(url+req.params.id)
-        .then((respuesta) => {
-            return respuesta.json()
-        })
-        .then(data => res.send(data))
-
-})
 
 export default router
