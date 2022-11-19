@@ -14,15 +14,25 @@ export const feedback = function (req, res) {
 
 export const crearorden = async function (req, res) {
     let {items} = req.body
-    await axios.post(url, {items})
-        .then(function (response) {
-            console.log(response.data);
-            res.send(response.data);
-        }).catch(function (error) {
-            if (error.response) {
-                let {status, statusText} = error.response;
-                console.log(status, statusText);
-                res.status(status).send(statusText);
-            } else res.status(400).send(error);
-        })
+    if(!items){
+        res.status(403)
+        res.send({error: 'No se están enviando los items para la creación de la preferencia'})
+    }
+    else {
+
+
+        await axios.post(url, {items})
+            .then(function (response) {
+                console.log(response.data);
+                res.send(response.data);
+            }).catch(function (error) {
+                if (error.response) {
+                    let {status, statusText} = error.response;
+                    console.log(status, statusText);
+                    res.status(status)
+                    res.send({error: 'Revise los datos para la creación de la orden, datos necesarios {quantity y unit_price'})
+
+                } else res.status(400).send(error);
+            })
+    }
 }
