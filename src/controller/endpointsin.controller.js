@@ -29,7 +29,8 @@ export const create_inventory = async function (req, res) {
         detail: req.body.detail,
         amount: req.body.amount,
         purchase_price: req.body.purchase_price,
-        sale_price: req.body.sale_price
+        sale_price: req.body.sale_price,
+        url_i: req.body.url_i
     }
     await axios.post(url, data)
         .then(function (response) {
