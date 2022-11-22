@@ -69,7 +69,7 @@ export const delete_inventory = async function (req, res) {
     const data = {
         id: req.body.id,
     }
-    await axios.delete(url, data)
+    await axios.delete(url, {data})
         .then(function (response) {
             console.log(response.data);
             res.send(response.data);
