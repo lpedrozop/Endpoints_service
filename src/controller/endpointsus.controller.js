@@ -31,6 +31,12 @@ export const sigin = async function (req, res) {
         tipo_u: req.body.tipo_u
 
     }
+
+    if(req.body.id === false || req.body.nombre === false || req.body.apellido === false  ){
+        res.status(403)
+        res.send({error: 'Complete el formulario de registro'})
+    }
+    if(data === true){
     await axios.post(url2, data)
         .then(function (response) {
             console.log(response.data);
@@ -42,4 +48,5 @@ export const sigin = async function (req, res) {
                 res.status(status).send(statusText);
             } else res.status(400).send(error);
         })
+}
 }
